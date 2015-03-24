@@ -26,20 +26,23 @@
     <![endif]-->
 
     <div ui-view class="container">
-      <div class="col-xs-2">
-        <h2>Деньги</h2>
-        <h3 class="money-ok">
-          500.0
-        </h3>
-        <ul class="nav nav-pills nav-stacked">
-          <li>
-            <a href="#"><i class="glyphicon glyphicon-th-list"></i> Транзакции</a>
-          </li>
-          <li>
-            <a href="#"><i class="glyphicon glyphicon-tasks"></i> Настройки</a>
-          </li>
-        </ul>
-      </div>
+    <div class="col-xs-2" ng-controller="NavigationCtrl as navigation_ctrl">
+      <h2>Деньги</h2>
+      <h3 class="money-ok">
+        500.0
+      </h3>
+      <ul class="nav nav-pills nav-stacked">
+        <li>
+          <a href="#">
+            <i class="glyphicon glyphicon-th-list"></i>
+            Транзакции <span class="badge">{{navigation_ctrl.transactions.length}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="#"><i class="glyphicon glyphicon-tasks"></i> Настройки</a>
+        </li>
+      </ul>
+    </div>
       <div class="col-xs-6" ng-controller="TransactionsCtrl as transactions_ctrl">
         <h2>Транзакции</h2>
         <form class="form-inline" ng-submit="transactions_ctrl.addTransaction()">
