@@ -32,13 +32,13 @@
           {{navigation_ctrl.transactions_store.sum()}}
         </h3>
         <ul class="nav nav-pills nav-stacked">
-          <li>
+          <li ui-sref-active="active">
             <a ui-sref="transactions">
               <i class="glyphicon glyphicon-th-list"></i>
               Транзакции <span class="badge">{{navigation_ctrl.transctions_store.transactions.length}}</span>
             </a>
           </li>
-          <li>
+          <li ui-sref-active="active">
             <a ui-sref="settings">
               <i class="glyphicon glyphicon-tasks"></i> Настройки
             </a>
