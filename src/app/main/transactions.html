@@ -1,0 +1,42 @@
+ <div ng-controller="TransactionsCtrl as transactions_ctrl">
+  <h2>Транзакции</h2>
+  <form class="form-inline" ng-submit="transactions_ctrl.addTransaction()">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input class="form-control"
+               type="text"
+               placeholder="Сумма"
+               ng-model="transactions_ctrl.newTransaction.amount">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="sr-only"></label>
+      <input type="text"
+             class="form-control"
+             placeholder="Описание"
+             ng-model="transactions_ctrl.newTransaction.description">
+    </div>
+    <button type="submit" class="btn btn-default">Добавить</button>
+  </form>
+
+  <table class="table table-striped" ng-show="transactions_ctrl.transactions.length">
+    <thead>
+      <tr>
+        <th>Сумма</th>
+        <th>Дата</th>
+        <th>Описание</th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="transaction in transactions_ctrl.transactions">
+        <td>{{transaction.amount}}</td>
+        <td>{{transaction.date}}</td>
+        <td>{{transaction.description}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+</div>

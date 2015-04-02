@@ -25,66 +25,27 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view class="container">
-    <div class="col-xs-2" ng-controller="NavigationCtrl as navigation_ctrl">
-      <h2>Деньги</h2>
-      <h3 class="money-ok">
-        {{navigation_ctrl.transactions_store.sum()}}
-      </h3>
-      <ul class="nav nav-pills nav-stacked">
-        <li>
-          <a href="#">
-            <i class="glyphicon glyphicon-th-list"></i>
-            Транзакции <span class="badge">{{navigation_ctrl.transactions_store.transactions.length}}</span>
-          </a>
-        </li>
-        <li>
-          <a href="#"><i class="glyphicon glyphicon-tasks"></i> Настройки</a>
-        </li>
-      </ul>
-    </div>
-      <div class="col-xs-6" ng-controller="TransactionsCtrl as transactions_ctrl">
-        <h2>Транзакции</h2>
-        <form class="form-inline" ng-submit="transactions_ctrl.addTransaction()">
-          <div class="form-group">
-            <div class="input-group">
-              <div class="input-group-addon">$</div>
-              <input class="form-control"
-                     type="text"
-                     placeholder="Сумма"
-                     ng-model="transactions_ctrl.newTransaction.amount">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="sr-only"></label>
-            <input type="text"
-                   class="form-control"
-                   placeholder="Описание"
-                   ng-model="transactions_ctrl.newTransaction.description">
-          </div>
-          <button type="submit" class="btn btn-default">Добавить</button>
-        </form>
-
-        <table class="table table-striped" ng-show="transactions_ctrl.transactions.length">
-          <thead>
-            <tr>
-              <th>Сумма</th>
-              <th>Дата</th>
-              <th>Описание</th>
-              <th>Действия</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="transaction in transactions_ctrl.transactions">
-              <td>{{transaction.amount}}</td>
-              <td>{{transaction.date}}</td>
-              <td>{{transaction.description}}</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
+    <div class="container">
+      <div class="col-xs-2" ng-controller="NavigationCtrl as navigation_ctrl">
+        <h2>Деньги</h2>
+        <h3 class="money-ok">
+          {{navigation_ctrl.transactions_store.sum()}}
+        </h3>
+        <ul class="nav nav-pills nav-stacked">
+          <li>
+            <a ui-sref="transactions">
+              <i class="glyphicon glyphicon-th-list"></i>
+              Транзакции <span class="badge">{{navigation_ctrl.transctions_store.transactions.length}}</span>
+            </a>
+          </li>
+          <li>
+            <a ui-sref="settings">
+              <i class="glyphicon glyphicon-tasks"></i> Настройки
+            </a>
+          </li>
+        </ul>
       </div>
+      <div class="col-xs-6" ui-view></div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
