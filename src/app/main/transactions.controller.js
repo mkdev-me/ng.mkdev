@@ -1,8 +1,9 @@
 angular.module('ngmkdev').controller('TransactionsCtrl', function($scope, TransactionsStore) {
-  this.transactions = TransactionsStore.transactions
+
+  TransactionsStore.loadTransactions();
 
   this.addTransaction = function() {
-    this.transactions.push(this.newTransaction);
+    TransactionsStore.addTransaction(this.newTransaction);
     this.resetTransaction();
   }
 
@@ -13,6 +14,8 @@ angular.module('ngmkdev').controller('TransactionsCtrl', function($scope, Transa
       description: null
     }
   }
+  this.transactions = TransactionsStore.transactions;
   this.resetTransaction();
 
 });
+
